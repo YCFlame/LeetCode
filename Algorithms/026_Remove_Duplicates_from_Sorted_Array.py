@@ -7,14 +7,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        length = 0
-        last = None
-        for i in range(len(nums)):
-            if last != nums[i]:
-                last = nums[i]
-                if length > 0:
-                    nums[length], nums[i] = nums[i], nums[length]
-                length += 1
+        if not nums:
+            return 0
+        last = 0
+        for i in range(1, len(nums)):
+            if nums[last] != nums[i]:
+                last += 1
+                if last != i:
+                    nums[last] = nums[i]
 
-        nums = nums[:length]
-        return length
+        return last + 1
