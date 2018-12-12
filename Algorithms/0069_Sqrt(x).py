@@ -4,5 +4,5 @@ class Solution:
         :type x: int
         :rtype: int
         """
-        from math import sqrt
-        return int(sqrt(x))
+        from math import sqrt, trunc
+        return trunc(sqrt(x))
