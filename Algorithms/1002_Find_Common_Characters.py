@@ -7,14 +7,6 @@ class Solution(object):
         from collections import Counter
         result = Counter(A[0])
         for s in A[1:]:
-            tmp = Counter(s)
-            for k, v in result.items():
-                if tmp[k] < v:
-                    result[k] = tmp[k]
+            result &= Counter(s)
         
-        common = []
-        for k, v in result.items():
-            for _ in range(v):
-                common.append(k)
-        
-        return common
+        return list(result.elements())
