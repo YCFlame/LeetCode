@@ -1,13 +1,16 @@
 class Solution:
     def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
-        mapper = {word: index for index, word in enumerate(list1)}
+        mapper = {}
+        minimum = 10000
         result = []
-        for i, word in enumerate(list2):
-            if word in mapper:
-                sum = i + mapper[word]
-                if not result or sum < result[0][0]:
-                    result = [(sum, word)]
-                elif sum == result[0][0]:
-                    result.append((sum, word))
+        for i, r in enumerate(list1):
+            mapper[r] = i
+        for i, r in enumerate(list2):
+            if r in mapper:
+                if i + mapper[r] < minimum:
+                    result = [r] 
+                    minimum = i + mapper[r]
+                elif i + mapper[r] == minimum:
+                    result.append(r)
         
-        return [word for _, word in result]
+        return result
