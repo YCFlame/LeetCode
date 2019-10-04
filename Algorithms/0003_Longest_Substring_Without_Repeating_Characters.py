@@ -1,12 +1,13 @@
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:   
-        cache = {}
+    def lengthOfLongestSubstring(self, s: str) -> int:
         rs = 0
+        cache = {}
         start = 0
         for i, c in enumerate(s):
             if c in cache:
-                start = max(cache[c] + 1, start)
-
-            rs = max(rs, i - start + 1)
+                rs = max(rs, i - start)
+                start = max(start, cache[c] + 1)
+            
             cache[c] = i
-        return rs
+                        
+        return max(rs, len(s) - start)
