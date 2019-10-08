@@ -6,7 +6,7 @@ class Solution:
         for i, c in enumerate(s):
             if c in cache:
                 rs = max(rs, i - start)
-                start = max(start, cache[c] + 1)
+                start = max(start, cache[c] + 1)  # start will jump backward without max function
             
             cache[c] = i
                         
