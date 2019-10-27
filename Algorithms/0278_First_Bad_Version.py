@@ -9,16 +9,12 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        start, end = 1, n + 1
-        mid = (start + end) // 2
-        while start < end:
+        lo, hi = 1, n
+        while lo < hi:
+            mid = (lo + hi) // 2
             if isBadVersion(mid):
-                if not isBadVersion(mid - 1):
-                    return mid 
-                end = mid
+                hi = mid
             else:
-                start = mid + 1
-            
-            mid = (start + end) // 2
-            
-        return mid
+                lo = mid + 1
+        
+        return lo
