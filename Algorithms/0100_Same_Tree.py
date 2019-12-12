@@ -22,9 +22,7 @@ class Solution:
                 
                 queue.append((p.left, q.left))
                 queue.append((p.right, q.right))
-            else:
-                if p != q:
-                    return False
+            elif p != q:
+                return False
         
         return True
-                
